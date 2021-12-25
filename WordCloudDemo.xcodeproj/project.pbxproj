@@ -13,6 +13,10 @@
 		888C56D5277711AD0029090A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888C56C3277711AC0029090A /* ContentView.swift */; };
 		888C56D6277711AD0029090A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888C56C4277711AD0029090A /* Assets.xcassets */; };
 		888C56D7277711AD0029090A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 888C56C4277711AD0029090A /* Assets.xcassets */; };
+		888C56E1277712730029090A /* WordCloudImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888C56E0277712730029090A /* WordCloudImageView.swift */; };
+		888C56E2277712730029090A /* WordCloudImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888C56E0277712730029090A /* WordCloudImageView.swift */; };
+		888C56E4277750660029090A /* WordCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888C56E3277750660029090A /* WordCloudView.swift */; };
+		888C56E5277750660029090A /* WordCloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888C56E3277750660029090A /* WordCloudView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,8 @@
 		888C56C9277711AD0029090A /* WordCloudDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordCloudDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		888C56CF277711AD0029090A /* WordCloudDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordCloudDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		888C56D1277711AD0029090A /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		888C56E0277712730029090A /* WordCloudImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCloudImageView.swift; sourceTree = "<group>"; };
+		888C56E3277750660029090A /* WordCloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordCloudView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +63,8 @@
 				888C56C2277711AC0029090A /* WordCloudDemoApp.swift */,
 				888C56C3277711AC0029090A /* ContentView.swift */,
 				888C56C4277711AD0029090A /* Assets.xcassets */,
+				888C56E0277712730029090A /* WordCloudImageView.swift */,
+				888C56E3277750660029090A /* WordCloudView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -176,6 +184,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				888C56E4277750660029090A /* WordCloudView.swift in Sources */,
+				888C56E1277712730029090A /* WordCloudImageView.swift in Sources */,
 				888C56D4277711AD0029090A /* ContentView.swift in Sources */,
 				888C56D2277711AD0029090A /* WordCloudDemoApp.swift in Sources */,
 			);
@@ -185,6 +195,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				888C56E5277750660029090A /* WordCloudView.swift in Sources */,
+				888C56E2277712730029090A /* WordCloudImageView.swift in Sources */,
 				888C56D5277711AD0029090A /* ContentView.swift in Sources */,
 				888C56D3277711AD0029090A /* WordCloudDemoApp.swift in Sources */,
 			);
