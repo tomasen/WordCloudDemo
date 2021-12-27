@@ -41,84 +41,84 @@ struct WordCloudView: View {
         .background(RectGetter($canvasRect))
     }
     
-func checkIntersects(rect: CGRect, rects: [CGRect]) -> Bool {
-    for r in rects {
-        if rect.intersects(r) {
-            return true
-        }
-    }
-    return false
-}
-
-func simularWordSizes(a: [CGSize], b: [CGSize]) -> Bool {
-    if a == b {
-        return true
-    }
-    
-    if a.count != b.count {
-        return false
-    }
-    var diff : CGFloat = 0
-    for i in 0...(a.count-1) {
-        diff += abs(a[i].width - b[i].width) +
-        abs(a[i].height - b[i].height)
-    }
-    
-    return diff < 0.01
-}
-
-func checkOutsideBoundry(canvasSize: CGSize, rect: CGRect) -> Bool {
-    if rect.maxY > canvasRect.height/2 {
-        return true
-    }
-    if rect.minY < -canvasRect.height/2 {
-        return true
-    }
-    return false
-}
-
-func calcPositions(canvasSize: CGSize, itemSizes: [CGSize]) -> [CGPoint] {
-    var pos = [CGPoint](repeating: CGPoint.zero, count: itemSizes.count)
-    if canvasSize.height == 0 {
-        return pos
-    }
-    
-    if positionCache.canvasSize == canvasSize
-        && simularWordSizes(a: positionCache.wordSizes, b: wordSizes) {
-        return positionCache.positions
-    }
-    defer {
-        positionCache.canvasSize = canvasSize
-        positionCache.wordSizes = wordSizes
-        positionCache.positions = pos
-    }
-    
-    var rects = [CGRect]()
-    
-    var step : CGFloat = 0
-    let ratio = canvasSize.width * 1.5 / canvasSize.height
-    
-    let startPos = CGPoint(x: CGFloat.random(in: 0...1) * canvasSize.width * 0.1,
-                           y: CGFloat.random(in: 0...1) * canvasSize.height * 0.1)
-    
-    for (index, itemSize) in itemSizes.enumerated() {
-        var nextRect = CGRect(origin: CGPoint(x: startPos.x - itemSize.width/2,
-                                              y: startPos.y - itemSize.height/2),
-                              size: itemSize)
-        if index > 0 {
-            while checkOutsideBoundry(canvasSize: canvasSize,
-                                      rect: nextRect)
-                    || checkIntersects(rect: nextRect, rects: rects) {
-                nextRect.origin.x = startPos.x + ratio * step * cos(step) + startPos.x - itemSize.width/2
-                nextRect.origin.y = startPos.y + step * sin(step) + startPos.y - itemSize.height/2
-                step = step + 0.01
+    func checkIntersects(rect: CGRect, rects: [CGRect]) -> Bool {
+        for r in rects {
+            if rect.intersects(r) {
+                return true
             }
         }
-        pos[index] = nextRect.center
-        rects.append(nextRect)
+        return false
     }
-    return pos
-}
+    
+    func simularWordSizes(a: [CGSize], b: [CGSize]) -> Bool {
+        if a == b {
+            return true
+        }
+        
+        if a.count != b.count {
+            return false
+        }
+        var diff : CGFloat = 0
+        for i in 0...(a.count-1) {
+            diff += abs(a[i].width - b[i].width) +
+            abs(a[i].height - b[i].height)
+        }
+        
+        return diff < 0.01
+    }
+    
+    func checkOutsideBoundry(canvasSize: CGSize, rect: CGRect) -> Bool {
+        if rect.maxY > canvasRect.height/2 {
+            return true
+        }
+        if rect.minY < -canvasRect.height/2 {
+            return true
+        }
+        return false
+    }
+    
+    func calcPositions(canvasSize: CGSize, itemSizes: [CGSize]) -> [CGPoint] {
+        var pos = [CGPoint](repeating: CGPoint.zero, count: itemSizes.count)
+        if canvasSize.height == 0 {
+            return pos
+        }
+        
+        if positionCache.canvasSize == canvasSize
+            && simularWordSizes(a: positionCache.wordSizes, b: wordSizes) {
+            return positionCache.positions
+        }
+        defer {
+            positionCache.canvasSize = canvasSize
+            positionCache.wordSizes = wordSizes
+            positionCache.positions = pos
+        }
+        
+        var rects = [CGRect]()
+        
+        var step : CGFloat = 0
+        let ratio = canvasSize.width * 1.5 / canvasSize.height
+        
+        let startPos = CGPoint(x: CGFloat.random(in: 0...1) * canvasSize.width * 0.1,
+                               y: CGFloat.random(in: 0...1) * canvasSize.height * 0.1)
+        
+        for (index, itemSize) in itemSizes.enumerated() {
+            var nextRect = CGRect(origin: CGPoint(x: startPos.x - itemSize.width/2,
+                                                  y: startPos.y - itemSize.height/2),
+                                  size: itemSize)
+            if index > 0 {
+                while checkOutsideBoundry(canvasSize: canvasSize,
+                                          rect: nextRect)
+                        || checkIntersects(rect: nextRect, rects: rects) {
+                    nextRect.origin.x = startPos.x + ratio * step * cos(step) + startPos.x - itemSize.width/2
+                    nextRect.origin.y = startPos.y + step * sin(step) + startPos.y - itemSize.height/2
+                    step = step + 0.01
+                }
+            }
+            pos[index] = nextRect.center
+            rects.append(nextRect)
+        }
+        return pos
+    }
 }
 
 

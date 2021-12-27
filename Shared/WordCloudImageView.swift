@@ -17,7 +17,7 @@ struct WordCloudImageView: View {
             .aspectRatio(contentMode: .fit)
             .padding(10)
     }
-
+    
     func wordCloudImage(_ words: [WordElement]) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(canvasSize, false, 1.0)
         
@@ -26,7 +26,7 @@ struct WordCloudImageView: View {
             let textAttrs = [
                 NSAttributedString.Key.font: UIFont(name: word.fontName, size: word.fontSize)!,
                 NSAttributedString.Key.foregroundColor: word.color,
-                ] as [NSAttributedString.Key : Any]
+            ] as [NSAttributedString.Key : Any]
             
             // calculate rendered size
             let estimateSize = (word.text as NSString).size(withAttributes: textAttrs)
