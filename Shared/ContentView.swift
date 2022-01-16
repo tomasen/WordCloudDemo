@@ -4,6 +4,9 @@
 //
 //  Created by SHEN SHENG on 12/25/21.
 //
+//  This code is a part of the Wordbook iOS app.
+//  Wordbook is an App to help memorize and learn new English words.
+//  website: https://www.wordbook.cool
 
 import SwiftUI
 
